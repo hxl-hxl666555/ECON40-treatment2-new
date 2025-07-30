@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Enter Code</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 150px; }
+    input { padding: 10px; font-size: 16px; }
+    button { padding: 10px 20px; font-size: 16px; margin-left: 10px; }
+  </style>
+</head>
+<body>
+  <h2>Please enter your participant code</h2>
+  <input type="text" id="code" placeholder="Enter code">
+  <button onclick="confirmCode()">Confirm</button>
+
+  <script>
+    function confirmCode() {
+      const code = document.getElementById('code').value.trim();
+      if (code !== '') {
+        localStorage.setItem('participantCode', code);
+        window.location.href = 'control group.html';
+      } else {
+        alert('Please enter a valid code.');
+      }
+    }
+  </script>
+</body>
+</html>
+

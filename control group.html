@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dell Desktop Configuration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      overflow-y: auto;
+    }
+    img {
+      display: block;
+      margin: 0 auto 30px;
+      max-width: 500px;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+    .section h3 {
+      margin-bottom: 10px;
+    }
+    .option-group {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 5px;
+    }
+    .option-group button {
+      flex: 0 0 auto;
+      width: 180px;
+      min-height: 80px;
+      padding: 12px 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #fff;
+      cursor: pointer;
+      text-align: left;
+      white-space: normal;
+    }
+    .option-group button.selected {
+      border: 2px solid #0070f3;
+      background-color: #e0f0ff;
+    }
+    .price {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 15px 30px;
+      border: 2px solid #0070f3;
+      border-radius: 10px;
+      font-size: 22px;
+      color: green;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    button.buy {
+      padding: 15px 30px;
+      font-size: 16px;
+      background-color: #0070f3;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button.buy:hover {
+      background-color: #0059c2;
+    }
+  </style>
+</head>
+<body>
+
+  <img src="images/black.avif" alt="Desktop Image">
+
+  <div class="price">Total Price: $<span id="total-price">999</span></div>
+
+  <div class="section">
+    <h3>Processor</h3>
+    <div class="option-group" id="processor">
+      <button data-price="429">Intel® Core™ Ultra 11 285 vPro® (13 TOPS NPU, 28 cores, up to 5.9GHz) + $429</button>
+      <button data-price="349">Intel® Core™ Ultra 11 285 vPro® (13 TOPS NPU, 24 cores, up to 5.6GHz) + $349</button>
+      <button data-price="209">Intel® Core™ Ultra 9 285 vPro® (13 TOPS NPU, 24 cores, up to 5.6GHz) + $209</button>
+      <button data-price="199">Intel® Core™ Ultra 7 265 vPro® (13 TOPS NPU, 20 cores, up to 5.3GHz) + $199</button>
+      <button data-price="39" class="selected">Intel® Core™ Ultra 5 245 vPro® (13 TOPS NPU, 14 cores, up to 5.1GHz) + $39</button>
+      <button data-price="0">Intel® Core™ Ultra 5 235 vPro® (13 TOPS NPU, 14 cores, up to 5.0GHz) + $0</button>
+    </div>
+  </div>
+
+
+  <div class="section">
+    <h3>Memory</h3>
+    <div class="option-group" id="memory">
+      <button data-price="659">128GB: 2 x 64GB, DDR5, up to 5600 MT/s, non-ECC + $659</button>
+      <button data-price="449">64GB: 2 x 32GB, DDR5, up to 5600 MT/s, non-ECC + $449</button>
+      <button data-price="289">32GB: 1 x 32GB, DDR5, up to 5600 MT/s, non-ECC + $289</button>
+      <button data-price="199">16GB: 1 x 16GB, DDR5, up to 5600 MT/s, non-ECC + $199</button>
+      <button data-price="39" class="selected">16GB: 2 x 8GB, DDR5, up to 5600 MT/s, non-ECC + $39</button>
+      <button data-price="0">8GB: 1 x 8GB, DDR5, up to 5600 MT/s, non-ECC + $0</button>
+    </div>
+  </div>
+
+
+  <div class="section">
+    <h3>Additional Hard Drive</h3>
+    <div class="option-group" id="additionaldrive">
+      <button data-price="0">No Additional Hard Drive + $0</button>
+      <button data-price="39" class="selected">Additional 256GB SSD TLC M.2 2230 PCIe Gen4 + $39</button>
+      <button data-price="109">Additional 512GB SSD QLC + $109</button>
+      <button data-price="159">Additional 512GB SSD TLC M.2 2230 PCIe Gen4 + $159</button>
+      <button data-price="299">Additional 1TB SSD TLC + $299</button>
+      <button data-price="399">Additional 2TB SSD TLC + $399</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Graphics Card</h3>
+    <div class="option-group" id="gpu">
+      <button data-price="0">Integrated Graphics + $0</button>
+      <button data-price="99.00" class="selected">Intel® UHD 730, shared graphics + $99</button>
+      <button data-price="194">AMD Radeon™ RX 6300, 2 GB GDDR6, full height, 2 DP + $194</button>
+      <button data-price="299.00">Intel® Arc A380, 6 GB, low profile, 2 DP + $299</button>
+      <button data-price="429.00">NVIDIA® T400, 4 GB, full height, 3 miniDP + $429</button>
+      <button data-price="549">AMD Radeon™ RX 7400, 8 GB GDDR6, full height, 4 DP + $549</button>
+    </div>
+  </div>
+
+
+  <div class="section">
+    <h3>Wireless</h3>
+    <div class="option-group" id="wireless">
+      <button data-price="0">No Wireless LAN Card + $0</button>
+      <button data-price="19" class="selected">Intel® Wi-Fi 5 8265, 2x2, 802.11ac, Bluetooth® + $19</button>
+      <button data-price="69">Intel® Wi-Fi 6 AX200, 2x2, 802.11ax, internal antenna + $69</button>
+      <button data-price="109">Intel® Wi-Fi 6E AX211, 2x2, 802.11ax, Bluetooth®, internal antenna + $109</button>
+      <button data-price="229">Intel® Wi-Fi 7 BE200, 2x2, 802.11be, Bluetooth®, internal antenna + $229</button>
+      <button data-price="309">Intel® Wi-Fi 7E BE200, 2x2, 802.11be, Bluetooth®, external antenna + $309</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>TPM Security</h3>
+    <div class="option-group" id="tpm">
+      <button data-price="0">Trusted Platform Module (Discrete TPM Enabled)</button>
+      <button data-price="0" class="selected">Firmware TPM only (No discrete TPM)</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Systems Management</h3>
+    <div class="option-group" id="vpro">
+      <button data-price="0" class="selected">No vPro® support</button>
+      <button data-price="9.75">Intel® Standard Manageability + $9.75</button>
+      <button data-price="25.99">Intel vPro® Enterprise + $25.99</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>EPEAT 2018</h3>
+    <div class="option-group" id="epeat">
+      <button data-price="0">Not EPEAT Registered</button>
+      <button data-price="0">EPEAT 2018 Registered (Silver)</button>
+      <button data-price="0" class="selected">EPEAT 2018 Registered (Gold)</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Adapter</h3>
+    <div class="option-group" id="adapter">
+      <button data-price="0" class="selected">No Additional Cable</button>
+      <button data-price="26.64">Dell Adapter - HDMI to VGA + $26.64</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>ENERGY STAR</h3>
+    <div class="option-group" id="energy">
+      <button data-price="0">ENERGY STAR Qualified</button>
+      <button data-price="0" class="selected">Not ENERGY STAR Qualified</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Power Cord</h3>
+    <div class="option-group" id="powercord">
+      <button data-price="0" class="selected">No Power Cord</button>
+      <button data-price="0">System Power Cord (Philippine/TH/US)</button>
+    </div>
+  </div>
+
+  <div id="warning" style="
+    display:none;
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background-color: rgba(255,0,0,0.9);
+    color:white;
+    padding: 20px 40px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 2000;
+    text-align: center;">
+    Please make a choice for each option
+  </div>
+
+
+
+
+  
+  
+
+  <button class="buy" onclick="submitDesktopConfig()">Buy Now</button>
+
+  <script>
+    const basePrice = 999;
+    const groupIds = [
+      'processor','memory','tpm','vpro','epeat','adapter','energy','powercord',
+      'additionaldrive','gpu','wireless'
+    ];
+    let selections = {};
+
+    function updateTotal() {
+      const total = basePrice + groupIds.reduce((sum, id) => sum + (selections[id] || 0), 0);
+      document.getElementById('total-price').textContent = total.toFixed(2);
+    }
+
+    function handleGroup(groupId) {
+      const group = document.getElementById(groupId);
+      group.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          group.querySelectorAll('button').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+          selections[groupId] = parseFloat(btn.getAttribute('data-price'));
+          updateTotal();
+        });
+      });
+    }
+
+    groupIds.forEach(handleGroup);
+
+    function submitDesktopConfig() {
+      const config = {};
+      let allSelected = true;
+
+    groupIds.forEach(id => {
+      const selected = document.querySelector(`#${id} .selected`);
+      if (!selected) {
+        allSelected = false;
+      }
+      config[id] = selected ? selected.textContent : '';
+    });
+
+    if (!allSelected) {
+      const warning = document.getElementById('warning');
+      warning.style.display = 'block';
+      setTimeout(() => {
+        warning.style.display = 'none';
+      }, 2000);
+      return;
+    }
+
+    // 保存并跳转
+    localStorage.setItem("desktop", JSON.stringify(config));
+    window.location.href = "end.html";
+}
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Thank You</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial;
+      height: 100vh;
+      background: #f7f7f7;
+      flex-direction: column;
+    }
+    h1 {
+      color: #0070f3;
+    }
+    #status {
+      margin-top: 20px;
+      font-size: 18px;
+      color: gray;
+    }
+    #status.success {
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Thanks for your participation!</h1>
+  <p id="status">Submitting your responses...</p>
+
+  <script>
+    
+    const participantCode = localStorage.getItem("participantCode") || "unknown";
+
+    const desktop = JSON.parse(localStorage.getItem("desktop") || '{}');
+    
+    const formUrl = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfSWBEr3B32qexEAJu0gV3AweF8LogNndDfNrIG-eAQBPN4ww/formResponse";
+
+    const formData = new FormData();
+    formData.append("entry.1786017681", participantCode); // code
+    formData.append("entry.1374037411", desktop.processor || "");
+    formData.append("entry.148138536",  desktop.memory || "");
+    formData.append("entry.2089902426", desktop.additionaldrive || "");
+    formData.append("entry.1421120726", desktop.gpu || "");
+    formData.append("entry.678930051",  desktop.wireless || "");
+    formData.append("entry.503688523",  desktop.tpm || "");
+    formData.append("entry.496124883",  desktop.vpro || "");
+    formData.append("entry.738188382",  desktop.epeat || "");
+    formData.append("entry.1982572656", desktop.adapter || "");
+    formData.append("entry.235885731",  desktop.energy || "");
+    formData.append("entry.1683393230", desktop.powercord || "");
+
+    // 发送到 Google 表单（no-cors 不可判断成功与否）
+    fetch(formUrl, {
+      method: "POST",
+      mode: "no-cors",
+      body: formData
+    }).then(() => {
+      console.log("✅ Data submitted to Google Form.");
+    }).catch((error) => {
+      console.error("❌ Submission failed:", error);
+    });
+
+    // 显示提交完成提示（假定成功）
+    setTimeout(() => {
+      const status = document.getElementById("status");
+      status.textContent = "✅ Data submitted to Google Form.";
+      status.classList.add("success");
+    }, 1000);
+  </script>
+</body>
+</html>
